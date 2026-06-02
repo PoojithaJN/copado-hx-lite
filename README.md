@@ -23,32 +23,7 @@ The project goes beyond simple CLI commands by introducing one-command delivery:
 
 ```bash
 python main.py deliver --id US-1234
-
-# copado-hx-lite
-
-Agent-Ready Headless Salesforce DevOps CLI built for CopadoCon 2026 Hackathon.
-
-`copado-hx-lite` helps developers, release engineers, and AI coding agents drive a Salesforce DevOps workflow directly from the terminal. It demonstrates a Copado-style delivery flow without opening the Copado browser UI: select a user story, analyze build scope, commit metadata, validate promotion, run CRT-style tests, generate release notes, diagnose failures, and emit automation-ready JSON status.
-
-## Why it stands out
-
-- One-command story delivery with `python main.py deliver --id US-1234`.
-- Agent-ready command surface with deterministic `--json` outputs.
-- Rich terminal output for human review and JSON output for automation.
-- API-ready service adapters under `services/`.
-- `SKILL.md` enables AI coding agents to understand and drive the CLI.
-- Safe-by-default design with no hardcoded secrets.
-- Local runtime state isolated to `.copado-hx.json`.
-- Demo ends with a strong measurable result: `Browser tabs opened: 0`.
-
-## Built to match the judging criteria
-
-### Creativity / Innovation
-
-The project goes beyond simple CLI commands by introducing one-command delivery:
-
-```bash
-python main.py deliver --id US-1234
+```
 
 This simulates an end-to-end Salesforce DevOps journey: story selection, AI build analysis, commit, UAT validation, CRT-style testing, release notes, dashboard summary, and zero browser tabs.
 

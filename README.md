@@ -1,41 +1,94 @@
 # copado-hx-lite
 
-Agent-Ready Headless Salesforce DevOps CLI for CopadoCon Hackathon.
+Agent-Ready Headless Salesforce DevOps CLI built for CopadoCon 2026 Hackathon.
 
-`copado-hx-lite` shows how release engineers, developers, and AI coding agents can drive a Salesforce DevOps workflow from the terminal. It keeps the Copado-style flow visible and repeatable: select a user story, analyze build scope, commit metadata, validate promotion, run Copado Robotic Testing, generate release notes, diagnose failures, and emit machine-readable status.
+`copado-hx-lite` helps developers, release engineers, and AI coding agents drive a Salesforce DevOps workflow directly from the terminal. It demonstrates a Copado-style delivery flow without opening the Copado browser UI: select a user story, analyze build scope, commit metadata, validate promotion, run CRT-style tests, generate release notes, diagnose failures, and emit automation-ready JSON status.
 
 ## Why it stands out
 
-- Agent-ready command surface with deterministic `--json` outputs.
 - One-command story delivery with `python main.py deliver --id US-1234`.
-- Rich terminal output for judges and JSON output for automation.
-- Demo mode works without credentials, network access, or secrets.
-- API-ready service adapters are separated under `services/`.
-- Local state is isolated to `.copado-hx.json`.
-- `SKILL.md` gives AI coding agents a direct operating playbook.
+- Agent-ready command surface with deterministic `--json` outputs.
+- Rich terminal output for human review and JSON output for automation.
+- API-ready service adapters under `services/`.
+- `SKILL.md` enables AI coding agents to understand and drive the CLI.
+- Safe-by-default design with no hardcoded secrets.
+- Local runtime state isolated to `.copado-hx.json`.
+- Demo ends with a strong measurable result: `Browser tabs opened: 0`.
 
-## Official Copado resources used
+## Built to match the judging criteria
 
-This prototype is inspired by public Copado product and documentation resources:
+### Creativity / Innovation
 
-- Copado documentation portal: https://docs.copado.com/
-- Copado AI Platform overview: https://www.copado.com/product-overview/copado-ai-platform
-- Copado Robotic Testing overview: https://www.copado.com/product-overview/copado-robotic-testing
-- Copado Essentials deployment documentation: https://docs.essentials.copado.com/
+The project goes beyond simple CLI commands by introducing one-command delivery:
 
-The implementation uses local demo data and API-ready adapter classes. It does not require access to Copado services for the hackathon demo.
+```bash
+python main.py deliver --id US-1234
 
-## Demo mode vs API mode
+# copado-hx-lite
 
-Demo mode is the default. If `.env` credentials are missing, the CLI safely continues with local mocked data and simulated workflow output.
+Agent-Ready Headless Salesforce DevOps CLI built for CopadoCon 2026 Hackathon.
 
-API mode is prepared through service clients in `services/`:
+`copado-hx-lite` helps developers, release engineers, and AI coding agents drive a Salesforce DevOps workflow directly from the terminal. It demonstrates a Copado-style delivery flow without opening the Copado browser UI: select a user story, analyze build scope, commit metadata, validate promotion, run CRT-style tests, generate release notes, diagnose failures, and emit automation-ready JSON status.
 
-- `services/copado_cicd.py` reads `COPADO_CICD_BASE_URL` and `COPADO_CICD_TOKEN`.
-- `services/copado_ai.py` reads `COPADO_AI_BASE_URL` and `COPADO_AI_TOKEN`.
-- `services/copado_crt.py` reads `COPADO_CRT_BASE_URL` and `COPADO_CRT_TOKEN`.
+## Why it stands out
 
-These clients use `requests`, load `.env` with `python-dotenv`, and return safe demo-mode responses when credentials are absent.
+- One-command story delivery with `python main.py deliver --id US-1234`.
+- Agent-ready command surface with deterministic `--json` outputs.
+- Rich terminal output for human review and JSON output for automation.
+- API-ready service adapters under `services/`.
+- `SKILL.md` enables AI coding agents to understand and drive the CLI.
+- Safe-by-default design with no hardcoded secrets.
+- Local runtime state isolated to `.copado-hx.json`.
+- Demo ends with a strong measurable result: `Browser tabs opened: 0`.
+
+## Built to match the judging criteria
+
+### Creativity / Innovation
+
+The project goes beyond simple CLI commands by introducing one-command delivery:
+
+```bash
+python main.py deliver --id US-1234
+
+This simulates an end-to-end Salesforce DevOps journey: story selection, AI build analysis, commit, UAT validation, CRT-style testing, release notes, dashboard summary, and zero browser tabs.
+
+### Business Relevance
+
+Salesforce teams often switch between IDEs, Git, Copado UI, testing tools, dashboards, and release documentation. `copado-hx-lite` reduces this context switching by moving the workflow into the terminal, making delivery faster, repeatable, and automation-friendly.
+
+### Demo Quality
+
+The demo is designed as a complete story, not disconnected commands. It shows a user story moving from selected work item to validated delivery with AI assistance, test results, release notes, JSON output, and failure diagnosis.
+
+## Official Copado Resource Alignment
+
+`copado-hx-lite` is designed around the official Copado Headless Hackathon resource areas.
+
+| Copado Resource Area | How copado-hx-lite aligns |
+|---|---|
+| Copado CI/CD / Agentia Pro | User story context, commit simulation, UAT validation, promotion workflow, deployment-ready command design |
+| Copado Robotic Testing / CRT | CRT-style job execution, test results, coverage summary, execution status, and automation-ready output |
+| Copado AI Platform | AI-style Build Agent analysis, Release Agent notes, failure diagnosis, smart recommendations, and `SKILL.md` for agent usage |
+| API Integration Resources | `services/` adapters are prepared for Copado CI/CD, Copado AI, and CRT credentials through `.env` |
+| Security Requirements | No hardcoded secrets, no tokens committed, local state isolated to `.copado-hx.json` |
+
+The current submission runs in a reliable offline demo mode so judges can evaluate the complete workflow without depending on live credentials or network setup. The codebase also includes API-ready service adapters so the same command surface can be connected to Copado Playground, Copado AI, and CRT credentials through environment variables.
+
+## Execution Modes
+
+### Demo Mode
+
+Demo mode is the default execution path. It allows the full headless DevOps workflow to run locally without external credentials. This makes the demo stable, repeatable, and safe for evaluation.
+
+### API-Ready Mode
+
+The project includes service adapters for future live integration:
+
+- `services/copado_cicd.py` for Copado CI/CD actions
+- `services/copado_ai.py` for Copado AI agent dialogue
+- `services/copado_crt.py` for Copado Robotic Testing jobs
+
+When official hackathon credentials are configured in `.env`, these adapters can be extended to call real Copado APIs without changing the CLI command surface.
 
 ## Setup
 
@@ -56,17 +109,28 @@ Do not commit `.env` or `.copado-hx.json`. Both are ignored by `.gitignore`.
 ## Architecture
 
 ```text
+Developer / Release Engineer / AI Agent
+        |
+        v
 main.py
   Typer CLI
   Rich terminal output
-  Local state orchestration
-  Demo user stories, commits, promotions, tests, release notes
-
+  Local workflow orchestration
+  JSON automation output
+        |
+        v
 services/
   copado_cicd.py  API-ready Copado CI/CD adapter
   copado_ai.py    API-ready Copado AI adapter
   copado_crt.py   API-ready Copado Robotic Testing adapter
+        |
+        v
+Copado CI/CD + Copado AI + Copado CRT
+```
 
+Project structure:
+
+```text
 examples/
   demo-flow.txt
   status.example.json
@@ -88,72 +152,121 @@ SKILL.md
 python main.py auth login --token demo-token
 python main.py auth status
 python main.py auth logout
+
 python main.py story list
 python main.py story set --id US-1234
 python main.py story show
+
 python main.py ai ask --agent build "What metadata should I commit?"
 python main.py commit --message "feat: lead scoring"
 python main.py promote --env UAT --validate
+
 python main.py test list
 python main.py test run --job JOB-101
 python main.py test status --execution EXE-101
 python main.py test results --execution EXE-101
+
 python main.py ai ask --agent release "Generate release notes"
+
 python main.py deliver --id US-1234
-python main.py diagnose
 python main.py dashboard
 python main.py dashboard --json
-python main.py recommend
 python main.py status
 python main.py status --json
+python main.py recommend
+python main.py diagnose
 ```
 
-## Judge-focused highlights
+## Key Demo Feature
 
-- Headless Salesforce DevOps workflow that works from terminal, scripts, or an AI agent.
-- Clear separation between CLI orchestration and future Copado API clients.
-- Safe-by-default behavior: no hardcoded secrets and no mandatory external calls.
-- Professional demo artifacts: examples, tests, MIT license, and `SKILL.md`.
-- Strong final signal: `deliver` ends with `Browser tabs opened: 0`.
+```bash
+python main.py deliver --id US-1234
+```
 
-## Final 5-minute demo flow
+This single command performs:
 
-1. Show the agent-ready project structure.
+```text
+Selected Story
+AI Build Analysis
+Commit Created
+Promotion Validation
+CRT Test Result
+Release Notes
+Dashboard Summary
+Browser tabs opened: 0
+```
 
-   ```bash
-   dir
-   ```
+## Judge-Focused Highlights
+
+- Headless Salesforce DevOps workflow from terminal, scripts, or AI agents.
+- One-command delivery instead of multiple manual UI steps.
+- JSON output for automation and agent parsing.
+- API-ready architecture for official Copado services.
+- Safety-first design with no hardcoded credentials.
+- Professional repository structure with tests, examples, MIT license, and `SKILL.md`.
+- Strong business signal: reduced browser dependency and less developer context switching.
+
+## Final 5-Minute Demo Flow
+
+1. Show the project structure.
+
+```bash
+dir
+```
 
 2. Authenticate in demo mode.
 
-   ```bash
-   python main.py auth login --token demo-token
-   ```
+```bash
+python main.py auth login --token demo-token
+```
 
-3. Run the full story delivery workflow.
+3. Run full story delivery.
 
-   ```bash
-   python main.py deliver --id US-1234
-   ```
+```bash
+python main.py deliver --id US-1234
+```
 
-4. Show machine-readable state for an AI agent.
+4. Show automation-ready output.
 
-   ```bash
-   python main.py status --json
-   python main.py dashboard --json
-   ```
+```bash
+python main.py status --json
+python main.py dashboard --json
+```
 
-5. Show smart next action and failure diagnosis.
+5. Show recommendation and diagnosis.
 
-   ```bash
-   python main.py recommend
-   python main.py diagnose
-   ```
+```bash
+python main.py recommend
+python main.py diagnose
+```
 
-6. Close with tests.
+6. Show code quality checks.
 
-   ```bash
-   python -m compileall main.py
-   pytest
-   ```
+```bash
+python -m compileall main.py
+python -m pytest
+```
 
+## Testing
+
+```bash
+python -m pytest
+```
+
+Expected result:
+
+```text
+4 passed
+```
+
+## Security
+
+- `.env` is ignored.
+- `.copado-hx.json` is ignored.
+- No real API keys are stored in source code.
+- Runtime state stays local.
+- API credentials must be supplied only through environment variables.
+
+## License
+
+MIT License

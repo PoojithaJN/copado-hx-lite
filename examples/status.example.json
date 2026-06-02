@@ -1,0 +1,49 @@
+{
+  "auth": "Authenticated",
+  "selected_story": {
+    "id": "US-1234",
+    "title": "Lead scoring automation",
+    "status": "Ready for Commit",
+    "branch": "feature/us-1234-lead-scoring",
+    "owner": "Sales Ops",
+    "metadata": [
+      "Lead.Score__c",
+      "LeadScoringFlow",
+      "LeadTriggerHandler"
+    ]
+  },
+  "last_commit": {
+    "id": "CMT-101010",
+    "story": "US-1234",
+    "message": "feat: deliver US-1234 lead scoring automation",
+    "metadata": [
+      "Lead.Score__c",
+      "LeadScoringFlow",
+      "LeadTriggerHandler"
+    ],
+    "created_at": "2026-06-02T12:00:00+00:00"
+  },
+  "last_promotion": {
+    "story": "US-1234",
+    "env": "UAT",
+    "mode": "Validation",
+    "status": "Validated",
+    "timestamp": "2026-06-02T12:00:00+00:00"
+  },
+  "last_test_execution": {
+    "id": "EXE-101",
+    "job": "JOB-101",
+    "status": "Passed",
+    "started": "2026-06-02T12:00:00+00:00",
+    "duration": "7m 42s",
+    "passed": 42,
+    "failed": 0,
+    "coverage": "91%"
+  },
+  "release_notes": {
+    "story": "US-1234",
+    "generated_at": "2026-06-02T12:00:00+00:00",
+    "body": "Delivered Lead scoring automation (US-1234). Included metadata: Lead.Score__c, LeadScoringFlow, LeadTriggerHandler. Validation: Validated to UAT. Regression: JOB-101 passed in EXE-101."
+  }
+}
+

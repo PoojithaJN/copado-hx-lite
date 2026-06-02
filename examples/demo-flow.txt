@@ -1,0 +1,9 @@
+python main.py auth login --token demo-token
+python main.py story list
+python main.py story set --id US-1234
+python main.py ai ask --agent build "What metadata should I commit?"
+python main.py deliver --id US-1234
+python main.py dashboard
+python main.py status --json
+python main.py recommend
+

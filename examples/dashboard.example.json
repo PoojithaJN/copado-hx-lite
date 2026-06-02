@@ -1,0 +1,9 @@
+{
+  "selected_story": "US-1234 - Lead scoring automation",
+  "commit_status": "Created (CMT-101010)",
+  "validation_status": "Validated to UAT",
+  "test_status": "Passed (EXE-101)",
+  "release_notes_status": "Generated",
+  "overall_progress_percentage": 100
+}
+
